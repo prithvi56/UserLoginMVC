@@ -1,0 +1,69 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Login</title>
+        <style>
+            input{
+                background-color:aliceblue;
+                height: 30px;
+                width: 280px;
+            }
+            button {
+                background-color: yellow;
+                width: 140px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .section{
+                border:2px solid #622222;
+                width: 300px;
+                margin-top: 120px;
+                margin-left: 35%;
+                margin-bottom: 106px;
+                padding: 20px;
+                padding-left: 60px;
+                padding-right: 60px;
+                background-color:black;
+                border-radius:15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+          <form name="myform" method="post" action="./loginServ" onsubmit="return validateform()" >
+            <b><center>Login</center></b><br>
+              
+            User Name: <br>
+            <input type="text" name="name" placeholder="Enter the username" ><br>
+            <br>
+                
+            Password: <br>
+            <input type="password" name="passwd" placeholder="Enter the password" required><br>
+            <br>
+                
+            <button type="submit">SignIn</button>
+                <a href="profile.html"><button type="button">SignUp</button></a>
+          </form> 
+        </div>
+    
+        <script>  
+            function validateform(){
+            	var name=document.myform.name.value;  
+                var password=document.myform.passwd.value;
+            	var regx = new RegExp("^[a-zA-Z ]*$");
+            	var res = regx.test(name);
+            	
+            	var filter = /[@$,<>#:?_*&;]/g;
+                
+            	if(!res){
+					alert("Name can only have alphabets!!!");
+					return false;
+                }
+                else if (!password.match(filter)) {
+            	alert("Password must have atleast one special character");  
+                    return false;
+                }
+            }  
+        </script>
+    </body>
+</html>
